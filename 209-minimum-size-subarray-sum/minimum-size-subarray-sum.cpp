@@ -1,7 +1,7 @@
 class Solution {
 public:
     int minSubArrayLen(int target, vector<int>& nums) {
-           int j = 0 ; // ending point of subarray
+        int j = 0 ; // ending point of subarray
         int n = nums.size();
         int len = INT_MAX;
         int sum = 0; // sum of current subarray
