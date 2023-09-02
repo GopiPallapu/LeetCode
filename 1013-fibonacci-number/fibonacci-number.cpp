@@ -1,6 +1,10 @@
 class Solution {
 public:
-
+    /*
+        Approach :
+        recurrsive approach without dp TC => O(2^n) SC => O(n)
+        recurrsive approach with dp TC => O(n) SC => O(n)
+    */
     int help(int n , vector<int>& dp)
     {
         if(n == 0 || n == 1)return n;
