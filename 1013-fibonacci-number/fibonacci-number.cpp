@@ -1,9 +1,7 @@
 class Solution {
 public:
     int fib(int n) {
-        double goldenMean = (1 + sqrt(5))/2;
-        double goldenNum = (1-sqrt(5))/2;
-
-        return (pow(goldenMean,n) - pow(goldenNum,n))/sqrt(5);
+        if(n == 0 || n == 1)return n;
+        return (fib(n-1)+fib(n-2));
     }
 };
