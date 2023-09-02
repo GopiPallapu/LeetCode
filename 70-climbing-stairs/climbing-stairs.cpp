@@ -1,5 +1,9 @@
 class Solution {
 public:
+    /*
+        Approach :
+        Recurrsive approach with dp TC => O(n) SC => O(n)
+    */
     int help(int i , int n , vector<int>& dp)
     {
         if( i >= n-1)return 1;
