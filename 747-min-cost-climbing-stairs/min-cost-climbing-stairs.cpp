@@ -1,5 +1,9 @@
 class Solution {
 public:
+    /*
+        Approach :
+        Recurrsive with dp TC => O(n) SC => O(n)
+    */
     int help(int i, int n , vector<int>& cost, vector<int>& dp)
     {
         if(i ==n)return 0;
