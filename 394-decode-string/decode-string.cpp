@@ -1,5 +1,9 @@
 class Solution {
 public:
+    /*
+        Approach :
+        using recurrsion TC => O(n) SC => O(n)
+    */
     string decode (int &i , string &s)
     {
         string result ="";
