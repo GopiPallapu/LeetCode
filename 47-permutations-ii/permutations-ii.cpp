@@ -10,7 +10,8 @@ public:
         unordered_set<int> s;
         for(int index = i ; index < n;index++)
         {
-            if(s.find(nums[index])!=s.end())continue;
+           // if(nums[index] == nums[index-1])continue;
+           if(s.find(nums[index])!=s.end())continue;
             s.insert(nums[index]);
             swap(nums[i] , nums[index]);
             helper(i+1 , n , ans ,nums);
@@ -20,6 +21,7 @@ public:
     }
     vector<vector<int>> permuteUnique(vector<int>& nums) {
         int n = nums.size();
+       // sort(nums.begin() , nums.end());
         vector<vector<int>> ans;
         helper(0,n,ans,nums);
         return ans;
