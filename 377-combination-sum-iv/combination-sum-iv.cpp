@@ -1,22 +1,19 @@
 class Solution {
 public:
-    void helper(int i , int target , int sum , vector<int> &nums , int n , vector<int>& subset , vector<vector<int>> &ans)
+    int  helper(int i , int target , int sum , vector<int> &nums , int n , int &temp)
     {
         if(sum == target)
         {
-            ans.push_back(subset);
-            return;
+           return 1;
         }
-        if(sum  > target)return ;
-        if(i >= n)return ;
+        if(sum  > target)return 0;
+        if(i >= n)return 0;
         sum +=nums[i];
-        subset.push_back(nums[i]);
-       helper(i , target ,sum , nums,n , subset , ans);
+       temp +=helper(i , target ,sum , nums,n ,temp);
         sum -=nums[i];
-        subset.pop_back();
-        helper(i+1  ,target , sum , nums , n ,subset,ans);
+       temp += helper(i+1  ,target , sum , nums , n,temp);
 
-        return ;
+        return temp ;
     }
     int count(vector<int> &nums , int target , int n ,vector<int>& dp )
     {
@@ -33,17 +30,10 @@ public:
     }
     int combinationSum4(vector<int>& nums, int target) {
         int n = nums.size();
-        vector<vector<int>> ans;
-        vector<int> subset;
-         //helper(0,target,0,nums,n,subset,ans);
-         for(auto var : ans)
-         {
-             for(auto i : var)
-                cout<<i<<" ";
-            cout<<endl;
-         }
+        int temp =0;
+         //helper(0,target,0,nums,n,temp);
          vector<int>dp(target+1, -1);
          return count(nums,target,n , dp);
-         //return ans.size();
+         return temp;
     }
 };
