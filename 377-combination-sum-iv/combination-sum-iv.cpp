@@ -1,17 +1,18 @@
 class Solution {
 public:
-    int  helper(int i , int target , int sum , vector<int> &nums , int n , int &temp)
+    int  helper(int i , int target , int sum , vector<int> &nums , int n )
     {
         if(sum == target)
         {
            return 1;
         }
+        int temp =0;
         if(sum  > target)return 0;
         if(i >= n)return 0;
         sum +=nums[i];
-       temp +=helper(i , target ,sum , nums,n ,temp);
+       temp +=helper(i , target ,sum , nums,n );
         sum -=nums[i];
-       temp += helper(i+1  ,target , sum , nums , n,temp);
+       temp += helper(i+1  ,target , sum , nums , n);
 
         return temp ;
     }
@@ -31,9 +32,9 @@ public:
     int combinationSum4(vector<int>& nums, int target) {
         int n = nums.size();
         int temp =0;
-         //helper(0,target,0,nums,n,temp);
+         //helper(0,target,0,nums,n);
          vector<int>dp(target+1, -1);
          return count(nums,target,n , dp);
-         return temp;
+         //return temp;
     }
 };
