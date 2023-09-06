@@ -1,5 +1,9 @@
 class Solution {
 public:
+    /*
+        TC => O(k * 2^n)
+        SC => O(n)
+    */
     bool alreadyUsed(string currStr, vector<int> &selected)
     {
         // first step check if the curr string conains duplicate strings are not 
