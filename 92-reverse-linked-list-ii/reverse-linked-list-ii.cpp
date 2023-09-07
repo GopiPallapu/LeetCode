@@ -25,7 +25,7 @@ public:
         ListNode *dummy = new ListNode(-1);
         dummy->next = head;
         ListNode* prev = dummy;
-        // move pre to left positions
+        // move prev to left positions
         int i =0;
         while(i < left-1)
         {
@@ -41,7 +41,7 @@ public:
             prev->next = curr->next;
             curr->next =curr->next->next ;
             prev->next->next = n;
-            print(head);
+           // print(head);
             i++;
 
         }
