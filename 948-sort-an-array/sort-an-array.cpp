@@ -37,6 +37,39 @@ public:
         mergeSort(arr , mid+1 ,r);
         merge(arr , l,mid,r);
     }
+    int partitionArray(vector<int>& input, int start, int end) {
+	// Write your code here
+	int pivot = input[start];
+	int i=start;
+	int j=end;
+	while(i<j){
+		while(input[i]<=pivot && i<end){
+			i++;
+		}
+		while(input[j]>=pivot && j>start){
+			j--;
+		}
+		 if (i < j)
+		 {
+			 int temp = input[i];
+			 input[i] = input[j];
+			 input[j] = temp;
+		 } 
+	}
+	 int temp = input[start];
+	input[start] = input[j];
+	input[j] = temp;
+	return j;
+}
+// best/avg/worst time complexity - O(n*log n)---- space complexity - O(1)
+void quickSort(vector<int>& input, int start, int end) {
+	
+	if(start<end){
+		int partitionIndex = partitionArray(input, start, end);
+		quickSort(input, start, partitionIndex-1);
+		quickSort(input, partitionIndex+1, end);
+	}
+}
     vector<int> sortArray(vector<int>& nums) {
         mergeSort(nums, 0,nums.size()-1);
         return nums;
