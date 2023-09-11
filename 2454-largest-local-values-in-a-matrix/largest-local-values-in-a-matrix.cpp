@@ -4,6 +4,7 @@ public:
         Approach :
         we have to iterate for each 3*3 matrix size and get max number and store it in answer matrix.
         TC => O(3 * (m*n))
+        Optimized  =  TC => O(n-2 * m-2) => O( (n-2)^2)
         SC => O(1)
     */
     int getMax(vector<vector<int>>& grid ,int i, int j)
@@ -19,17 +20,20 @@ public:
         return num;
     }
     vector<vector<int>> largestLocal(vector<vector<int>>& grid) {
-        vector<vector<int>> ans ;
         int n = grid.size();
         int m = grid[0].size();
-        for(int i =0 ; i< n-2;i++)
+         vector<vector<int>> ans (n-2 , vector<int>(m-2)) ;
+        for(int i =1 ; i<= n-2;i++)
         {
-            vector<int> temp;
-            for(int j =0;j< m-2;j++)
+           // vector<int> temp;
+            for(int j =1;j<= m-2;j++)
             {
-                temp.push_back(getMax(grid,i,j));
+                int maxNum =0;
+                maxNum = max({maxNum , grid[i-1][j-1], grid[i-1][j], grid[i-1][j+1]});
+                maxNum = max({maxNum , grid[i][j-1], grid[i][j], grid[i][j+1]});
+                maxNum = max({maxNum , grid[i+1][j-1], grid[i+1][j], grid[i+1][j+1]});
+                ans[i-1][j-1] = maxNum;
             }
-            ans.push_back(temp);
         }
         return ans;
     }
