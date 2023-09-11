@@ -28,15 +28,31 @@ public:
         }
         return answer;
     }
+    bool checkForPrime(int num )
+    {
+        if( num <2) return false;
+        for(int j =2 ; j*j <= num ; j++ )
+        {
+            if(num % j == 0)
+                return false;
+        }
+        return true;
+
+    }
     int diagonalPrime(vector<vector<int>>& mat) {
         int n = mat.size();
-        vector<int> diagonalNumbers ;
+        int answer =0;
         for(int i = 0 ;i< n; i++)
         {
-            diagonalNumbers.push_back(mat[i][i]);
-            if( i != n-1-i)
-                diagonalNumbers.push_back(mat[i][n-1-i]);
+            if(checkForPrime(mat[i][i]))
+            {
+                answer = max(answer , mat[i][i]);
+            }
+            if( i != n-1-i && checkForPrime(mat[i][n-1-i]))
+            {
+                answer  = max (answer  ,mat[i][n-1-i]);
+            }
         }
-        return largestPrimeNumber(diagonalNumbers);
+        return answer;
     }
 };
