@@ -9,6 +9,20 @@ public:
         TC => O(n*m)
         SC => O(n+m)
     */
+    bool checkMinInRows(int i , int j , int cols, vector<vector<int>>& matrix){
+        for(int k=0;k<cols;k++){
+            if(j!=k && matrix[i][k]<matrix[i][j]){
+                return false;
+            }
+        }
+        return true;
+    }
+    bool checkMaxInCols(int i , int j , int rows , vector<vector<int>>& matrix){
+        for(int k=0;k<rows;k++){
+            if(i!=k && matrix[k][j] > matrix[i][j])return false;
+        }
+        return true;
+    }
     vector<int> luckyNumbers (vector<vector<int>>& matrix) {
         vector<int> minRows ;
         vector<int> maxCols ;
@@ -47,7 +61,11 @@ public:
         {
             for(int j =0;j< m ;j++)
             {
-                if(matrix[i][j] == minRows[i] && matrix[i][j] == maxCols[j])
+                /*if(matrix[i][j] == minRows[i] && matrix[i][j] == maxCols[j])
+                {
+                    answer.push_back(matrix[i][j]);
+                }*/
+                if(checkMaxInCols(i,j,n,matrix) && checkMinInRows(i,j,m,matrix))
                 {
                     answer.push_back(matrix[i][j]);
                 }
