@@ -1,5 +1,11 @@
 class Solution {
 public:
+    /*
+        Approach :
+        get all diagonal elements and check prime for each element
+        TC => O(n * sqrt(n))
+        SC => O(1)
+    */
     int largestPrimeNumber(vector<int>& nums)
     {
         int answer =0;
