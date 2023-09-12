@@ -12,7 +12,7 @@ class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
         if(head == NULL)return NULL;
-        ListNode* dummy = new ListNode(-1);
+        /*ListNode* dummy = new ListNode(-1);
         dummy->next = head;
         ListNode* tail = dummy;
         while(tail != NULL && tail->next != NULL)
@@ -26,6 +26,16 @@ public:
                 else
                 tail = tail->next;
         }
-        return dummy->next;
+        return dummy->next;*/
+        // recurrsive approach :
+        head->next = removeElements(head->next , val);
+        if(head->val == val)
+        {
+            ListNode* temp = head->next;
+            delete head;
+            return temp;
+        }
+        else
+            return head;
     }
 };
