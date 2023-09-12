@@ -24,7 +24,7 @@ public:
     }
     ListNode* reverseKGroup(ListNode* head, int k) {
         if(head == NULL || head->next == NULL || k == 1)return head;
-        ListNode* dummy = new ListNode(-1);
+      /*  ListNode* dummy = new ListNode(-1);
         dummy->next  =head;
         ListNode* beforeStart = dummy , *end = head;
         int i =0;
@@ -46,6 +46,18 @@ public:
                 end  =  end->next;
             }
         }
-        return dummy->next;
+        return dummy->next;*/
+        // recurrsive solution
+        ListNode* start = head , *end = head;
+        int inc = k-1;
+        while(inc--)
+        {
+            end = end->next;
+            if(end == NULL)return head;
+        }
+        ListNode* newHead = reverseKGroup(end->next , k);
+        reverse(start,end);
+        start->next = newHead;
+        return end;
     }
 };
