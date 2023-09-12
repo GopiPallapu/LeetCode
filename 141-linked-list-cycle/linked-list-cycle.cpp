@@ -4,8 +4,11 @@
  *     int val;
  *     ListNode *next;
  *     ListNode(int x) : val(x), next(NULL) {}
+        Approach:
+        using two pointers slow and fast , iterate if cycle found, then slow and fast will meet
+        TC => O(n)
+        SC => O(1)
  * };
-    TC -> O(n+k)k is constant to detect loop SC-> O(1) using two pointer approach
  */
 class Solution {
 public:
