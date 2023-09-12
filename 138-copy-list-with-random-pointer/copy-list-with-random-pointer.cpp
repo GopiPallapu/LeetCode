@@ -16,9 +16,46 @@ public:
 
 class Solution {
 public:
+    void copy(Node* head)
+    {
+        Node* temp  =head , *n = head->next;
+        while(temp != NULL)
+        {
+            Node* node = new Node(temp->val);
+            node->next = n;
+            temp->next = node;
+            temp  = n;
+            if(n)n = n->next;
+        }
+    }
+    void random(Node* head)
+    {
+        Node* temp = head;
+        while(temp != NULL)
+        {
+                if(temp->random != NULL)
+                {
+                    temp->next->random = temp->random->next;
+                }
+                temp  =temp->next->next;
+        }
+    }
+    Node* detach(Node* head)
+    {
+        Node* dummy = new Node(-1);
+        Node* tail = dummy  ,*temp = head;
+        while(temp != NULL)
+        {
+                tail->next = temp->next;
+                tail = tail->next;
+                temp->next = tail->next;
+                temp = temp->next;
+        }
+        return dummy->next;
+    }
     Node* copyRandomList(Node* head) {
         if(head == NULL)return head;
-        unordered_map<Node*, Node*> mp;
+       /* unordered_map<Node*, Node*> mp;
         Node* temp = head;
         while(temp != NULL)
         {
@@ -33,6 +70,9 @@ public:
             mp[temp]->random = mp[temp->random];
             temp = temp->next;
         }
-        return mp[head];
+        return mp[head];*/
+        copy(head);
+        random(head);
+        return detach(head);
     }
 };
